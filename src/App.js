@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import Pins from "./components/Pins";
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import ForgotPassword from "./components/ForgotPassword";
+import Invalid from "./components/invalid";
+import ResetPassword from "./components/resetPassword";
+import LinkSent from "./components/linkSent";
+import UserVerfied from "./components/userVerified";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<div className='App'>
+				<div>
+					<Switch>
+						<Route exact path='/' component={LoginForm}></Route>
+						<Route path='/passwordReset' component={ForgotPassword}></Route>
+						<Route path='/signUp' component={SignUpForm}></Route>
+						<Route path='/invalid' component={Invalid}></Route>
+						<Route path='/resetPassword' component={ResetPassword}></Route>
+						<Route path='/pins' component={Pins}></Route>
+						<Route path='/linkSent' component={LinkSent}></Route>
+						<Route path='/userVerified' component={UserVerfied}></Route>
+					</Switch>
+				</div>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;
